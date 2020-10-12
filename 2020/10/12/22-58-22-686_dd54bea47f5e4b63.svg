@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600" height="300" viewBox="0 0 600 300"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <defs>
+    <linearGradient id="HGrad">
+      <stop offset="0.0"   style="stop-color:#444444" />
+      <stop offset="0.3"   style="stop-color:#ffffff" />
+      <stop offset="0.5"   style="stop-color:#ffffff" />
+      <stop offset="1.0"   style="stop-color:#000000" />
+    </linearGradient>
+    <linearGradient id="VGrad" xlink:href="#HGrad"
+		    x1="0" x2="0" y1="0" y2="1"/>
+
+    <pattern id="Weave" patternUnits="userSpaceOnUse" width="24" height="16">
+      <rect x="0"  y="0"  width="24" height="8" style="fill:url(#VGrad)"/>
+      <rect x="0"  y="8"  width="24" height="8" style="fill:url(#VGrad)"/>
+
+      <rect x="3"  y="0"  width="6"  height="8" style="fill:url(#HGrad)"/>
+      <rect x="15" y="8"  width="6"  height="8" style="fill:url(#HGrad)"/>
+    </pattern>
+
+    <filter id="Fabric" style="color-interpolation-filters:sRGB">
+      <feGaussianBlur stdDeviation="0.5" result="blur"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.17" result="turb1"/>
+      <feDisplacementMap in="blur" in2="turb1" scale="6" xChannelSelector="A" yChannelSelector="A" result="map1"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.01" result="turb2"/>
+      <feDisplacementMap in="map1" in2="turb2" scale="10" xChannelSelector="A" yChannelSelector="A" result="map2"/>
+    </filter>
+  </defs>
+
+  <rect x="10%" y="10%" width="80%" height="80%" style="fill:url(#Weave);filter:url(#Fabric)"/>
+</svg>
